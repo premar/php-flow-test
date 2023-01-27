@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a52a2ab93bba0a2398914171525feaee",
+    "content-hash": "0b13a51c882c1a63b61797b7c4405bc4",
     "packages": [
         {
             "name": "brick/math",
@@ -3125,6 +3125,32 @@
                 }
             ],
             "time": "2022-10-04T10:57:47+00:00"
+        },
+        {
+            "name": "nexit/domaineditor",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./DistributionPackages/Nexit.DomainEditor",
+                "reference": "e150b619887086935e9e59cf93c63a26476dee16"
+            },
+            "require": {
+                "neos/flow": "*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "Nexit.DomainEditor"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nexit\\DomainEditor\\": "Classes/"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "psr/cache",
@@ -7349,7 +7375,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "happy/coding": 20
+        "happy/coding": 20,
+        "nexit/domaineditor": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

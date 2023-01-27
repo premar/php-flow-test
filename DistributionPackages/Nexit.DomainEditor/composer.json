@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "nexit/domaineditor",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nexit\\DomainEditor\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Nexit.DomainEditor"
+        }
+    }
+}
