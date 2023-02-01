@@ -20,9 +20,7 @@
     },
     "require": {
         "neos/flow": "~8.2.0",
-        "neos/welcome": "~8.2.0",
-        "happy/coding": "@dev",
-        "nexit/domaineditor": "@dev"
+        "nexit/example": "@dev"
     },
     "require-dev": {
         "neos/kickstarter": "~8.2.0",

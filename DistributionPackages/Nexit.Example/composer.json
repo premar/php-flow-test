@@ -1,18 +1,18 @@
 {
     "description": "",
     "type": "neos-package",
-    "name": "happy/coding",
+    "name": "nexit/example",
     "require": {
         "neos/flow": "*"
     },
     "autoload": {
         "psr-4": {
-            "Happy\\Coding\\": "Classes/"
+            "Nexit\\Example\\": "Classes/"
         }
     },
     "extra": {
         "neos": {
-            "package-key": "Happy.Coding"
+            "package-key": "Nexit.Example"
         }
     }
 }

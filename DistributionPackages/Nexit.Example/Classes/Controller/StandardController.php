@@ -1,8 +1,8 @@
 <?php
-namespace Happy\Coding\Controller;
+namespace Nexit\Example\Controller;
 
 /*
- * This file is part of the Happy.Coding package.
+ * This file is part of the Nexit.Example package.
  */
 
 use Neos\Flow\Annotations as Flow;

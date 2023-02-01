@@ -1,4 +1,4 @@
-Happy.Coding |version| Documentation
+Nexit.Example |version| Documentation
 ==================================================================================================
 
 This documentation covering version |release| has been rendered at: |today|
