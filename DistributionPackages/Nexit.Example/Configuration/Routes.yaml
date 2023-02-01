@@ -1,0 +1,8 @@
+-
+  name: 'Default'
+  uriPattern: ''
+  defaults:
+    '@package': 'Nexit.Example'
+    '@controller': 'Standard'
+    '@action': 'index'
+    '@format': 'html'
