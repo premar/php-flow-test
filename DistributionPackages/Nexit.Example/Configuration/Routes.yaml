@@ -6,3 +6,11 @@
     '@controller': 'Standard'
     '@action': 'index'
     '@format': 'html'
+-
+  name: 'Zone'
+  uriPattern: 'v1/zone'
+  defaults:
+    '@package': 'Nexit.Example'
+    '@controller': 'Zone'
+    '@action': 'index'
+    '@format': 'json'

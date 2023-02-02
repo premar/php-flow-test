@@ -8,10 +8,10 @@ namespace Nexit\Example\Controller;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
 
-class StandardController extends ActionController
+class ZoneController extends ActionController
 {
     public function indexAction()
     {
-        return "API Endpoint";
+        return "Zone";
     }
 }
