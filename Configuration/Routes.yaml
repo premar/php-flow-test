@@ -1,0 +1,6 @@
+-
+  name: 'Example'
+  uriPattern: '<ExampleSubroutes>'
+  subRoutes:
+    ExampleSubroutes:
+      package: Nexit.Example
