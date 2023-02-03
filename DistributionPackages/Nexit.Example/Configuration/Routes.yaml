@@ -4,7 +4,6 @@
   defaults:
     '@package': 'Nexit.Example'
     '@controller': 'Standard'
-    '@action': 'index'
     '@format': 'html'
 -
   name: 'Zone'
@@ -12,5 +11,4 @@
   defaults:
     '@package': 'Nexit.Example'
     '@controller': 'Zone'
-    '@action': 'index'
     '@format': 'json'
