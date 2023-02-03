@@ -6,7 +6,7 @@ use Nexit\Example\Exception\RecordPriorityLowException;
 use Nexit\Example\Exception\RecordTimeToLiveHighException;
 use Nexit\Example\Exception\RecordTimeToLiveLowException;
 
-class MxRecord extends GenericRecord
+class MailExchangeRecord extends GenericRecord
 {
     public int $priority;
     /**

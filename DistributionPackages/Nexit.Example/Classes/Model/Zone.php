@@ -3,23 +3,23 @@ namespace Nexit\Example\Model;
 
 class Zone
 {
-    public string $origin = "";
-    public array $nsRecords = array();
-    public array $aRecords = array();
-    public array $aaaaRecords = array();
-    public array $mxRecords = array();
-    public array $prtRecords = array();
-    public array $cnameRecords = array();
-    public array $txtRecords = array();
-    public array $spfRecords = array();
+    public string $originDomain = "";
+    public array $nameServerRecords = array();
+    public array $addressRecords = array();
+    public array $quadAddressRecords = array();
+    public array $mailExchangeRecords = array();
+    public array $pointerRecords = array();
+    public array $canonicalNameRecords = array();
+    public array $textRecords = array();
+    public array $senderPolicyFrameworkRecords = array();
 
-    public function addNsRecord(string $nameserver): bool
+    public function addNameServerRecord(string $nameserver): bool
     {
-        if (in_array($nameserver, $this->nsRecords)) {
+        if (in_array($nameserver, $this->nameServerRecords)) {
             throw new \Exception("Nameserver already exists");
         }
 
-        if (count($this->nsRecords) >= 4) {
+        if (count($this->nameServerRecords) >= 4) {
             throw new \Exception("Too many nameservers");
         }
 
@@ -27,13 +27,13 @@ class Zone
             throw new \Exception("Invalid nameserver");
         }
 
-        $this->nsRecords[] = $nameserver;
+        $this->nameServerRecords[] = $nameserver;
         return true;
     }
 
-    public function addARecord(string $destination, string $ip, int $ttl): bool
+    public function addAddressRecord(string $destination, string $ip, int $ttl): bool
     {
-        if (in_array($ip, $this->aRecords)) {
+        if (in_array($ip, $this->addressRecords)) {
             throw new \Exception("A record already exists");
         }
 
@@ -42,13 +42,13 @@ class Zone
         }
 
         $aRecord = new GenericRecord($destination, $ip, $ttl);
-        $this->aRecords[] = $aRecord;
+        $this->addressRecords[] = $aRecord;
         return true;
     }
 
-    public function addAAAARecord(string $destination, string $ip, int $ttl): bool
+    public function addQuadAddressRecord(string $destination, string $ip, int $ttl): bool
     {
-        if (in_array($ip, $this->aaaaRecords)) {
+        if (in_array($ip, $this->quadAddressRecords)) {
             throw new \Exception("AAAA record already exists");
         }
 
@@ -57,22 +57,22 @@ class Zone
         }
 
         $aaaaRecord = new GenericRecord($destination, $ip, $ttl);
-        $this->aaaaRecords[] = $aaaaRecord;
+        $this->quadAddressRecords[] = $aaaaRecord;
         return true;
     }
 
-    public function addMxRecord(string $destination, string $mailserver, int $ttl, int $priority): bool
+    public function addMailExchangeRecord(string $destination, string $mailServer, int $ttl, int $priority): bool
     {
-        if (in_array($mailserver, $this->mxRecords)) {
+        if (in_array($mailServer, $this->mailExchangeRecords)) {
             throw new \Exception("MX record already exists");
         }
 
-        if (!filter_var($mailserver, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
+        if (!filter_var($mailServer, FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)) {
             throw new \Exception("Invalid mailserver");
         }
 
-        $mxRecord = new MxRecord($destination, $mailserver, $ttl, $priority);
-        $this->mxRecords[] = $mxRecord;
+        $mxRecord = new MailExchangeRecord($destination, $mailServer, $ttl, $priority);
+        $this->mailExchangeRecords[] = $mxRecord;
         return true;
     }
 }

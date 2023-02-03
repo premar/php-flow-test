@@ -21,13 +21,13 @@ class ZoneController extends ActionController
     {
         $zone = new Zone();
 
-        $zone->origin = 'example.com';
-        $zone->addARecord('@', '192.168.1.1', 300);
-        $zone->addARecord('test', '192.168.1.2', 300);
+        $zone->originDomain = 'example.com';
+        $zone->addAddressRecord('@', '192.168.1.1', 300);
+        $zone->addAddressRecord('test', '192.168.1.2', 300);
 
-        $zone->addMxRecord('@', 'mail.example.com', 300, 10);
+        $zone->addMailExchangeRecord('@', 'mail.example.com', 300, 10);
 
-        $zone->addNsRecord('ns1.example.com');
+        $zone->addNameServerRecord('ns1.example.com');
 
         $this->view->assign('value', $zone);
     }
