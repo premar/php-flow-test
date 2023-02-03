@@ -9,6 +9,7 @@ use Exception;
 use Neos\Flow\Mvc\Controller\ActionController;
 use Neos\Flow\Mvc\View\JsonView;
 use Nexit\Example\Model\Zone;
+use JMS\Serializer\SerializerBuilder as Builder;
 
 class ZoneController extends ActionController
 {
@@ -29,6 +30,11 @@ class ZoneController extends ActionController
 
         $zone->addNameServerRecord('ns1.example.com');
 
-        $this->view->assign('value', $zone);
+        $serializer = Builder::create()->build();
+        $jsonContent = $serializer->serialize($zone, 'json');
+
+        return $jsonContent;
+
+        $this->view->assign("value", $zone);
     }
 }

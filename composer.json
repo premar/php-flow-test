@@ -19,8 +19,9 @@
         }
     },
     "require": {
-        "neos/flow": "~8.2.0",
-        "nexit/example": "@dev"
+        "neos/flow": "^8.2",
+        "nexit/example": "@dev",
+        "jms/serializer": "^3.22"
     },
     "require-dev": {
         "neos/kickstarter": "~8.2.0",

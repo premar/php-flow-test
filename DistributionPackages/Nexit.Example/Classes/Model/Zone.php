@@ -1,16 +1,45 @@
 <?php
 namespace Nexit\Example\Model;
 
+use JMS\Serializer\Annotation as JMS;
+
 class Zone
 {
+    /**
+     * @JMS\SerializedName("domain_name")
+     */
     public string $originDomain = "";
+    /**
+     * @JMS\SerializedName("ns")
+     */
     public array $nameServerRecords = array();
+    /**
+     * @JMS\SerializedName("a")
+     */
     public array $addressRecords = array();
+    /**
+     * @JMS\SerializedName("aaaa")
+     */
     public array $quadAddressRecords = array();
+    /**
+     * @JMS\SerializedName("mx")
+     */
     public array $mailExchangeRecords = array();
+    /**
+     * @JMS\SerializedName("ptr")
+     */
     public array $pointerRecords = array();
+    /**
+     * @JMS\SerializedName("cname")
+     */
     public array $canonicalNameRecords = array();
+    /**
+     * @JMS\SerializedName("txt")
+     */
     public array $textRecords = array();
+    /**
+     * @JMS\SerializedName("spf")
+     */
     public array $senderPolicyFrameworkRecords = array();
 
     public function addNameServerRecord(string $nameserver): bool

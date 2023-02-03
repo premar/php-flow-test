@@ -32,6 +32,11 @@ class GenericRecord
         $this->ttl = $ttl;
     }
 
+    public function getDestination(): string
+    {
+        return $this->destination;
+    }
+
     public function getValue(): string
     {
         return $this->value;
