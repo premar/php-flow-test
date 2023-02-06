@@ -1,7 +1,10 @@
 <?php
 namespace Nexit\Example\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use JMS\Serializer\Annotation as JMS;
+use Doctrine\ORM\Mapping as ORM;
 
 class Zone
 {
@@ -9,10 +12,12 @@ class Zone
      * @JMS\SerializedName("domain_name")
      */
     public string $originDomain = "";
+
     /**
-     * @JMS\SerializedName("ns")
+     * @var Collection<GenericRecord>
+     * @ORM\OneToMany(orphanRemoval=true, cascade={"all"}, mappedBy="zone")
      */
-    public array $nameServerRecords = array();
+    protected  $nameServerRecords;
     /**
      * @JMS\SerializedName("a")
      */
@@ -42,7 +47,31 @@ class Zone
      */
     public array $senderPolicyFrameworkRecords = array();
 
-    public function addNameServerRecord(string $nameserver): bool
+    public function __construct()
+    {
+        $this->nameServerRecords = new ArrayCollection();
+    }
+
+
+    /**
+     * @return Collection
+     */
+    public function getNameServerRecords(): Collection
+    {
+        return $this->nameServerRecords;
+    }
+
+    /**
+     * @param Collection $nameServerRecords
+     */
+    public function setNameServerRecords(Collection $nameServerRecords): void
+    {
+        $this->nameServerRecords = $nameServerRecords;
+    }
+
+
+
+    public function addNameServerRecord(string $nameserver): void
     {
         if (in_array($nameserver, $this->nameServerRecords)) {
             throw new \Exception("Nameserver already exists");
@@ -57,10 +86,9 @@ class Zone
         }
 
         $this->nameServerRecords[] = $nameserver;
-        return true;
     }
 
-    public function addAddressRecord(string $destination, string $ip, int $ttl): bool
+    public function addAddressRecord(string $destination, string $ip, int $ttl): void
     {
         if (in_array($ip, $this->addressRecords)) {
             throw new \Exception("A record already exists");
@@ -72,10 +100,9 @@ class Zone
 
         $aRecord = new GenericRecord($destination, $ip, $ttl);
         $this->addressRecords[] = $aRecord;
-        return true;
     }
 
-    public function addQuadAddressRecord(string $destination, string $ip, int $ttl): bool
+    public function addQuadAddressRecord(string $destination, string $ip, int $ttl): void
     {
         if (in_array($ip, $this->quadAddressRecords)) {
             throw new \Exception("AAAA record already exists");
@@ -87,10 +114,9 @@ class Zone
 
         $aaaaRecord = new GenericRecord($destination, $ip, $ttl);
         $this->quadAddressRecords[] = $aaaaRecord;
-        return true;
     }
 
-    public function addMailExchangeRecord(string $destination, string $mailServer, int $ttl, int $priority): bool
+    public function addMailExchangeRecord(string $destination, string $mailServer, int $ttl, int $priority)
     {
         if (in_array($mailServer, $this->mailExchangeRecords)) {
             throw new \Exception("MX record already exists");
@@ -102,6 +128,5 @@ class Zone
 
         $mxRecord = new MailExchangeRecord($destination, $mailServer, $ttl, $priority);
         $this->mailExchangeRecords[] = $mxRecord;
-        return true;
     }
 }

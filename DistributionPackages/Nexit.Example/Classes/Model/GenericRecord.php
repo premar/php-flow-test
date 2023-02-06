@@ -1,11 +1,19 @@
 <?php
 namespace Nexit\Example\Model;
 
+use Doctrine\ORM\Mapping as ORM;
 use Nexit\Example\Exception\RecordTimeToLiveLowException;
 use Nexit\Example\Exception\RecordTimeToLiveHighException;
 
 class GenericRecord
 {
+    /**
+     * @var Zone
+     * @ORM\ManyToOne(cascade={"persist", "merge"}, inversedBy="nameServerRecords")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    protected $zone;
     public string $destination;
     public string $value;
     public int $ttl;
@@ -31,6 +39,24 @@ class GenericRecord
 
         $this->ttl = $ttl;
     }
+
+    /**
+     * @return Zone
+     */
+    public function getZone(): Zone
+    {
+        return $this->zone;
+    }
+
+    /**
+     * @param Zone $zone
+     */
+    public function setZone(Zone $zone): void
+    {
+        $this->zone = $zone;
+    }
+
+
 
     public function getDestination(): string
     {
